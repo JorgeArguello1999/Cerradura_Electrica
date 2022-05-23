@@ -33,17 +33,20 @@ class Conexion():
         foto= foto.read()
 
         cursor= self.conn.cursor()
-        cursor.execute("INSERT INTO Usuarios (Nombre, Cargo, Foto) VALUES ({nombre}, {cargo},{foto}) ")
+        cursor.execute("INSERT INTO Usuarios (Nombre, Cargo, Foto) VALUES (?, ?, ?)", (nombre, cargo, foto))
 
         self.conn.commit()
         self.conn.close()
 
-    def leerUsuarios(self):
-        cursor= self.conn.cursor()
-        cursor.execute("SELECT * FROM ID")
+        return True
+
+    def leerUsuariosID(self):
+        conn= sql.connect("Usuarios.db")
+        cursor= conn.cursor()
+        cursor.execute("SELECT ID FROM Usuarios")
         datos= cursor.fetchall()
-        self.conn.commit()
-        self.conn.close()
+        conn.commit()
+        conn.close()
         return datos
 
 
