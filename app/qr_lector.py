@@ -6,10 +6,8 @@ from pyzbar.pyzbar import decode
 # Modulo de Base de Datos
 import database
 
-# Interfaz grafica
-import tkinter
 
-class QR():
+class QR_Lector():
     cap = cv2.VideoCapture(0)
 
     # Establecemos el ancho y largo 
@@ -44,7 +42,8 @@ class QR():
                             # print("Lector=", mydata, " tipo de dato:", type(mydata))
                             # Recuadro para autorizado
                             color= (0,255,0)
-                            salida= True
+                            salida= self.db.leerUsuarios(i[0])
+                            print(salida)
 
                     except:
                         print(mydata)
@@ -66,5 +65,5 @@ class QR():
             cv2.waitKey(1)
 
 if __name__=='__main__':
-    start= QR()
+    start= QR_Lector()
     start.camara()
