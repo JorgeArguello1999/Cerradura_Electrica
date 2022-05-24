@@ -35,6 +35,7 @@ class QR_Lector():
                 mydata= str(mydata)
 
                 for i in datos:
+                    # color= (0,0,255)
                     try:
                         if int(i[0])==int(mydata):
                             print("Iguales")
@@ -42,11 +43,12 @@ class QR_Lector():
                             # print("Lector=", mydata, " tipo de dato:", type(mydata))
                             # Recuadro para autorizado
                             color= (0,255,0)
-                            salida= self.db.leerUsuarios(i[0])
-                            print(salida)
+                            salida= True
+                            print("Esta es la salida: ",salida)
+
 
                     except:
-                        print(mydata)
+                        print("La entrada no es de las tarjetas: ", mydata)
                         color= (0,0,255)
 
                     # Coordenadas del codigo de barras

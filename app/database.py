@@ -49,16 +49,15 @@ class Conexion():
         conn.close()
         return datos
 
-    def leerUsuarios(self, ID):
+    def leerUsuariosNombre(self, nombre):
         conn= sql.connect("Usuarios.db")
         cursor= conn.cursor()
-        cursor.execute("SELECT * FROM Usuarios WHERE ID=?", ID)
+        command= "SELECT * FROM Usuarios WHERE Nombre='"+ nombre+ "';"
+        cursor.execute(command)
         salida= cursor.fetchall()
         conn.commit()
         conn.close()
         return salida 
-
-
 
 if __name__=='__main__':
     db= Conexion()
