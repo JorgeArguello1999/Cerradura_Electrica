@@ -43,7 +43,7 @@ class Conexion():
     def leerUsuariosID(self):
         conn= sql.connect("Usuarios.db")
         cursor= conn.cursor()
-        cursor.execute("SELECT ID FROM Usuarios")
+        cursor.execute("SELECT ID, Nombre FROM Usuarios")
         datos= cursor.fetchall()
         conn.commit()
         conn.close()
@@ -57,7 +57,7 @@ class Conexion():
         salida= cursor.fetchall()
         conn.commit()
         conn.close()
-        return salida 
+        return salida
 
 if __name__=='__main__':
     db= Conexion()
