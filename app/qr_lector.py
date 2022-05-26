@@ -68,7 +68,6 @@ class QR_Lector():
                                   color,
                                   10)
 
-                
             # Se muestra el frame
             cv2.imshow('Cerradura Electrica', img)
             # Se espera antes de terminar la camara
