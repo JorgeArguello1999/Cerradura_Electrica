@@ -22,7 +22,7 @@ int derA = 9;
 int derB = 10; 
 int vel = 255; // Velocidad de los motores (0-255)
 int led_S= 13; // Pines de conexion para led's
-int led_N= 15; // Pin de conexion led
+int led_N= 13; // Pin de conexion led
 int salida;
 
 void setup()  { 
@@ -79,25 +79,29 @@ void loop()  {
           analogWrite(derA, 0);    // Detiene los Motores
           delay(2000);
 
-          /*Serial.println("Reversa");
-          analogWrite(derB, vel);  // Reversa 2 segundos
-          // analogWrite(izqB, vel);
-          delay(5000);
-
-          Serial.println("Detenido");
-          analogWrite(derA, 0);    // Detiene los Motores
-          analogWrite(izqA, 0);
-          */
                    
         }
         if(salida=='N'){
-          digitalWrite(led_N, HIGH);
+          digitalWrite(led_N, LOW);
           delay(2000);
 
           Serial.println("Detenido");
           analogWrite(derA, 0);    // Detiene los Motores
           analogWrite(izqA, 0);
         }
+        /*
+        if(salida=='C'){      
+          digitalWrite(led_N, LOW);
+          Serial.println("Reversa");
+          analogWrite(derB, vel);  // Reversa 2 segundos
+          analogWrite(izqB, vel);
+          delay(2000);
+
+          Serial.println("Derecha");
+          analogWrite(derA, vel);   // Los mueve a la derecha
+          delay(1000);
+        }
+        */
       
     }
 }

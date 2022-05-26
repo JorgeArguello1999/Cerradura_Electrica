@@ -6,29 +6,11 @@ from pyzbar.pyzbar import decode
 # Modulo de Base de Datos
 import database
 
-# Modulo Arduino
-import serial
-import time
-
 cap = cv2.VideoCapture(0)
 # Establecemos el ancho y largo 
 cap.set(3,640)
 cap.set(4,480)
 db=database.Conexion()
-
-# Conexion a Arduino
-def arduino(motor):
-    arduino= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    if motor=='S':
-        print("Abriendo Puerta")
-        arduino.write(b'S')
-    # Aun en desarrollo
-    if motor=='C':
-        print("Cerrando Puerta")
-        arduino.write(b'C')
-    else:
-        arduino.write(b'N')
-    return arduino.close()
 
 # Abrimos la camara
 def camara():
@@ -59,8 +41,6 @@ def camara():
                         1,
                         color,
                         3)
-                    arduino("S")
-                    time.sleep(2)
             except:
                 print("La entrada no es de las tarjetas: ", mydata)
                 color= (0,0,255)
